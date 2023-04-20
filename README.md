@@ -1,14 +1,14 @@
 # Whisper ONNX models
 
-OpenAI Whisper speech recognition models, exported to ONNX.
+A tool to export OpenAI Whisper speech recognition models to ONNX.
 
-The original source code has been simplified to only the core model file (`model.py`).
+The core model file (`model.py`) has been isolated from the [original Whisper codebase](https://github.com/openai/whisper). Other files are not included or needed.
 
-Taking the code in [`whisper-openvino`](https://github.com/zhuzilin/whisper-openvino) as a starting point, the model's key-value structure has been modified to pass as an input and output, with no need for hooks.
+Taking some of the code in [`whisper-openvino`](https://github.com/zhuzilin/whisper-openvino) as a starting point, the model's key-value structure has been modified to be passed as an input or output, removing the need for hooks.
 
-The `TextDecoder`, `ResidualAttentionBlock` and `MultiHeadAttention` classes have also been modified to directly output the cross-attention weights, without any hooks.
+The `TextDecoder`, `ResidualAttentionBlock` and `MultiHeadAttention` classes have also been further modified to directly output the cross-attention weights, without any hooks.
 
-The exported ONNX model is primarily designed to be used from Echogarden, which has its own implementation of the higher-level Whisper API (other than the core model), and is written in JavaScript. The code doesn't include a way to use the exported models from Python. However, since it is closely related to the code on [`whisper-openvino`](https://github.com/zhuzilin/whisper-openvino), which does work from Python, it should be possible to make it work with it, with some modifications.
+The exported ONNX models are primarily intended to be used with Echogarden, which has its own implementation of the higher-level Whisper API, and is written in JavaScript. The code doesn't include a way to use the exported models from Python. However, since it is closely related to the code on [`whisper-openvino`](https://github.com/zhuzilin/whisper-openvino), which adapts the higher-level Python API to use it, it should be possible to make it work with it, with some modifications.
 
 ## Usage
 
