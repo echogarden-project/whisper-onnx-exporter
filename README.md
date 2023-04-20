@@ -1,4 +1,4 @@
-# Whisper ONNX models
+# Whisper ONNX exporter
 
 A tool to export OpenAI Whisper speech recognition models to ONNX.
 
