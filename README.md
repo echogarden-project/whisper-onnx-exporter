@@ -10,6 +10,10 @@ The `TextDecoder`, `ResidualAttentionBlock` and `MultiHeadAttention` classes hav
 
 The exported ONNX models are primarily intended to be used with Echogarden, which has its own implementation of the higher-level Whisper API, and is written in TypeScript. The code doesn't include a way to use the exported models from Python. However, since it is closely related to the code on [`whisper-openvino`](https://github.com/zhuzilin/whisper-openvino), which adapts the higher-level Python API to use it, it should be possible to make it work with it, with some modifications.
 
+## Downloading pre-exported models
+
+You can download pre-exported models for all sizes, except `large`, `large-v1` and `large-v2`, from the releases section of the [`whisper-onnx-models` repository](https://github.com/echogarden-project/whisper-onnx-models).
+
 ## Usage
 
 Ensure you have PyTorch installed.
