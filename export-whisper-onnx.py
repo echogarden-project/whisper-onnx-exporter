@@ -1,6 +1,7 @@
 import sys
 import os
 import torch
+from timeit import default_timer as timer
 
 from model import Whisper, ModelDimensions
 
@@ -17,6 +18,8 @@ validModelNames = ["tiny", "tiny.en", "base", "base.en", "small", "small.en", "m
 if not modelName in validModelNames:
 	print("Error: model name must be one of {}".format(", ".join(validModelNames)))
 	exit(1)
+	
+startTime = timer()
 
 checkpoint = torch.load("pytorch-models/{}.pt".format(modelName), map_location=torch.device('cpu'))
 
@@ -38,7 +41,9 @@ outputDir = "onnx-models/{}".format(modelName)
 
 os.makedirs(outputDir, exist_ok=True)
 
-torch.onnx.export(audioEncoder, audioEncoderRandomInputs, "{}/encoder.onnx".format(outputDir), input_names=["mel"], output_names=["output"], opset_version=14, verbose=True)
+opset_version = 17
+
+torch.onnx.export(audioEncoder, audioEncoderRandomInputs, "{}/encoder.onnx".format(outputDir), input_names=["mel"], output_names=["output"], opset_version=opset_version, verbose=True)
 
 textDecoder = whisper.decoder
 
@@ -53,4 +58,6 @@ dynamic_axes={
 	"kv_cache": [1, 2],
 	"output_kv_cache": [1, 2],
 	"cross_attention_qks": [1, 3, 4],
-}, opset_version=14, verbose=False)
+}, opset_version=opset_version, verbose=False)
+
+print("\nTotal export time: {:.2f}s".format(timer() - startTime))
