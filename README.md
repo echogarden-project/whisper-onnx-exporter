@@ -16,7 +16,7 @@ You can download pre-exported models for all sizes, except `large`, `large-v1`, 
 
 ## Usage
 
-Ensure you have PyTorch installed.
+Ensure you have `torch` and `onnx` Python libraries installed.
 
 Copy the official Whisper model files (`.pt`) to the `pytorch-models` subdirectory.
 
