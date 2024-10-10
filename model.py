@@ -262,7 +262,7 @@ class Whisper(nn.Module):
 			size = [24, n_group, length, 768]
 		elif self.type == "medium.en" or self.type == "medium":
 			size = [48, n_group, length, 1024]
-		elif self.type == "large" or self.type == "large-v1" or self.type == "large-v2" or self.type == "large-v3":
+		elif self.type == "large" or self.type == "large-v1" or self.type == "large-v2" or self.type == "large-v3" or self.type == "large-v3-turbo":
 			size = [64, n_group, length, 1280]
 		else:
 			raise ValueError(f"Unsupported model type: {self.type}")

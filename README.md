@@ -22,11 +22,11 @@ Copy the official Whisper model files (`.pt`) to the `pytorch-models` subdirecto
 
 To get the models you can use the official Whisper CLI, which would auto-download a model as needed. On Windows, the downloaded models should be stored at `%userprofile%\.cache\whisper`.
 
-Alternatively, you may find direct download URLs in the [original whisper source code](https://github.com/openai/whisper/blob/e58f28804528831904c3b6f2c0e473f346223433/whisper/__init__.py#L17C1-L17C1).
+Alternatively, you can find direct download URLs in the [original Whisper source code](https://github.com/openai/whisper/blob/25639fc17ddc013d56c594bfbf7644f2185fad84/whisper/__init__.py#L17).
 
 Run:
 ```
-python export-whisper-onnx.py [whisper-model-name]
+python export-whisper-onnx.py whisper-model-name [--export-fp16] [--export-fp16-mixed]
 ```
 
 For example:
